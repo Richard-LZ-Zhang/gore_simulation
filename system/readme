@@ -1,0 +1,13 @@
+How to run the sim, in parallel and in series:
+    - blockMesh > log.blockMesh
+    - extrudeMesh > log.extrudeMesh
+
+    PARALLEL: if you want to run in parallel, do the following two steps. Else, do the bottom step.
+    - decomposePar > log.decomposePar
+    - mpirun -np 4 snappyHexMesh -parallel -overwrite > log.shm &
+    Note: to view the mesh in paraview, make sure to select "Decomposed Case" instead of "Reconstructed Case".
+
+    SERIES: if you want to run in series (i.e. 1 thread), do this step, and ignore the two steps above.
+    - snappyHexMesh -overwrite > log.shm &
+    Note: the meshing took my computer around 22 minutes IN PARALLEL with 4 threads.
+    I therefore strongly recommend you try using parallel computing, rather than series.

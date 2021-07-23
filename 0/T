@@ -1,0 +1,66 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2012                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      T;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+#include        "include/initialConditions"
+dimensions      [0 0 0 1 0 0 0];
+
+internalField   uniform $temperature;
+
+boundaryField
+{
+    chute_master
+    {
+        type            zeroGradient;
+    }
+    chute_slave
+    {
+        type            zeroGradient;
+    }
+    
+    minx-mesh-wedge
+    {
+        type            symmetry;
+    }
+    maxx-mesh-wedge
+    {
+        type            symmetry;
+    }
+    minx-mesh-chutesphere
+    {
+        type            symmetry;
+    }
+    maxx-mesh-chutesphere
+    {
+        type            symmetry;
+    }
+    inlet
+    {
+        type            fixedValue;
+        value           uniform $temperature;
+    }
+    outlet
+    {
+        type            zeroGradient;
+    }
+    maxy
+    {
+    	type            zeroGradient;
+    }
+    
+    
+    
+}
+
+// ************************************************************************* //

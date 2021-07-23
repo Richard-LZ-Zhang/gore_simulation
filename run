@@ -1,0 +1,11 @@
+#------------------------------------------------------------------------------
+decomposePar -force >log.decomposePar
+mpirun -np 5 sonicFoamm -parallel > log.solver &
+reconstructPar -latestTime >log.reconstructPar
+
+
+cd OFproject/gore_25_remote/postProcessing/forceCoeffs1/0.014779613
+
+
+
+

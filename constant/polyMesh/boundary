@@ -1,0 +1,78 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2012                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       polyBoundaryMesh;
+    location    "constant/polyMesh";
+    object      boundary;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+9
+(
+    outlet
+    {
+        type            patch;
+        nFaces          114;
+        startFace       873092;
+    }
+    inlet
+    {
+        type            patch;
+        nFaces          140;
+        startFace       873206;
+    }
+    minx-mesh-chutesphere
+    {
+        type            symmetry;
+        nFaces          3047;
+        startFace       873346;
+    }
+    minx-mesh-wedge
+    {
+        type            symmetry;
+        nFaces          9430;
+        startFace       876393;
+    }
+    maxx-mesh-chutesphere
+    {
+        type            symmetry;
+        nFaces          3047;
+        startFace       885823;
+    }
+    maxx-mesh-wedge
+    {
+        type            symmetry;
+        nFaces          9430;
+        startFace       888870;
+    }
+    maxy
+    {
+        type            patch;
+        nFaces          870;
+        startFace       898300;
+    }
+    chute_master
+    {
+        type            wall;
+        inGroups        2(wall chute);
+        nFaces          4407;
+        startFace       899170;
+    }
+    chute_slave
+    {
+        type            wall;
+        inGroups        2(wall chute);
+        nFaces          4407;
+        startFace       903577;
+    }
+)
+
+// ************************************************************************* //

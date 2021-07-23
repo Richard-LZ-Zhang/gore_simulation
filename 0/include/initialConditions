@@ -1,0 +1,19 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2012                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+
+
+Vel	50;
+flowVelocity        (0 0 $Vel);
+turbulentintensity	0.01;
+turbulentlength	0.02;
+pressure            100000;
+temperature         300;
+turbulentKE         1;//#eval {1.5*pow($Vel,2)*($turbulentintensity^2)};
+turbulentEpsilon    10;// #eval {0.07*(turbulentKE^1.5)/$turbulentlength};
+
+// ************************************************************************* //

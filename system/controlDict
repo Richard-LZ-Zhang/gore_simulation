@@ -1,0 +1,112 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2012                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     sonicFoam;
+
+startFrom       latestTime;//startTime;
+
+startTime       1.933311e-5;
+
+stopAt          endTime;
+
+endTime         2;
+
+deltaT          2.2e-7;
+
+writeControl    runTime;
+
+writeInterval   2e-4;
+//writeControl timeStep;
+//writeInterval 1;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  8;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   8;
+
+runTimeModifiable 	true;
+
+adjustTimeStep  true; // true
+
+maxDeltaT	1e-4;
+maxCo   	0.7;
+
+functions
+{
+    libs            (fieldFunctionObjects);
+    forceCoeffs1
+	{
+	    // Mandatory entries
+	    type            forceCoeffs;
+	    libs            ("libforces.so");
+	    patches         (chute_master chute_slave);
+
+
+	    // Optional entries
+
+	    // Field names
+	    p               p;
+	    U               U;
+	    rho             rho;
+	    rhoInf      1.161;
+	    // Reference pressure [Pa]
+	    pRef            0;
+
+	    // Include porosity effects?
+	    porosity        no;
+
+	    // Store and write volume field representations of forces and moments
+	    writeFields     no; //yes
+
+	    // Centre of rotation for moment calculations
+	    CofR            (0 0 0);
+
+	    // Lift direction
+	    liftDir         (0.258819 0.96592583 0);
+
+	    // Drag direction
+	    dragDir         (0 0 1);
+
+	    // Pitch axis
+	    pitchAxis       (0 0 1);
+
+	    // Freestream velocity magnitude [m/s]
+	    magUInf         50;
+
+	    // Reference length [m]
+	    lRef            0.18;
+
+	    // Reference area [m2]
+	    Aref            8.482e-3;
+
+	    // Spatial data binning
+	    // - extents given by the bounds of the input geometry
+	    executeControl      writeTime;
+	    writeControl        writeTime;
+	    
+	}
+}
+
+
+// ************************************************************************* //

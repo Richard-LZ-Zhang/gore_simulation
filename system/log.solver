@@ -1,0 +1,15 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2012                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _269d0ffd5c-20210619 OPENFOAM=2012 patch=210618
+Arch   : "LSB;label=32;scalar=64"
+Exec   : sonicFoamm -parallel
+Date   : Jul 19 2021
+Time   : 16:04:07
+Host   : rz-virtual-machine
+PID    : 35619
+I/O    : uncollated
